@@ -30,7 +30,7 @@ import java.util.UUID;
  */
 //@ManagedBean("samlSessionFilter")
 public class SAMLSessionFilterHandler implements Filter {
-    private Map<String, String> userToUuid = new HashMap<String, String>();
+    private final Map<String, String> userToUuid = new HashMap<>();
     @Inject
     private ABean theBean;
 
@@ -72,7 +72,6 @@ public class SAMLSessionFilterHandler implements Filter {
                 if (validateUUID(uuid, user)) {
                     Principal principal = createPrincipal(user);
                     wrappedServletRequest.setUserPrincipal(principal);
-                    return;
                 }
 
             }

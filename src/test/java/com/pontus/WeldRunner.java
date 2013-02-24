@@ -13,20 +13,19 @@ import javax.enterprise.inject.spi.InjectionTarget;
 public class WeldRunner extends BlockJUnit4ClassRunner {
 
     private final Class klass;
-    private final Weld weld;
     private final WeldContainer weldContainer;
 
     public WeldRunner(final Class klass) throws InitializationError {
         super(klass);
         this.klass = klass;
-        this.weld = new Weld();
+        Weld weld = new Weld();
         weldContainer = weld.initialize();
     }
 
     @Override
     protected Object createTest() throws Exception {
         return weldContainer.instance().select(klass).get();
-      //  return getWelcomeActionBean();
+        //  return getWelcomeActionBean();
 
     }
 

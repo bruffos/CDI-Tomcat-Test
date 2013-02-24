@@ -30,21 +30,21 @@ public class SingletonAPI {
     @Inject
     private RuleEngineBean ruleEngineBean;
 
-	@Inject
-	@AProperty
-	private String aProperty;
+    @Inject
+    @AProperty
+    private String aProperty;
 
     @GET
     @Path("principal/name")
     @Produces("text/plain")
-    public String getPrincipalName(@Context HttpServletRequest request) throws Exception {
+    public String getPrincipalName(@Context HttpServletRequest request) {
         return request.getUserPrincipal().getName();
     }
 
     @GET
     @Path("principal/theBean")
     @Produces("text/plain")
-    public String getTheBean() throws Exception {
+    public String getTheBean() {
         return theBean.getTheProperty();
     }
 
@@ -52,29 +52,29 @@ public class SingletonAPI {
     @GET
     @Path("principal/ABean")
     @Produces("text/plain")
-    public String getABean() throws Exception {
+    public String getABean() {
         return theBean.getAProperty();
     }
 
-	@GET
+    @GET
     @Path("principal/evaluateRules")
     @Produces("text/plain")
-    public boolean evaluateRules() throws Exception {
+    public boolean evaluateRules() {
         return ruleEngineBean.evaluateRules();
     }
 
     @GET
     @Path("principal/evaluateRule/{ruleId}")
     @Produces("text/plain")
-    public boolean evaluateRule(@PathParam("ruleId") String ruleId) throws Exception {
+    public boolean evaluateRule(@PathParam("ruleId") String ruleId) {
         return ruleEngineBean.evaluateRule(ruleId);
     }
 
-	@GET
-	@Path("principal/aproperty")
-	@Produces("text/plain")
-	public String getAProperty() throws Exception {
-		return aProperty;
-	}
+    @GET
+    @Path("principal/aproperty")
+    @Produces("text/plain")
+    public String getAProperty() {
+        return aProperty;
+    }
 }
 

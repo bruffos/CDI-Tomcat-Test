@@ -21,11 +21,8 @@ import static org.mockito.MockitoAnnotations.initMocks;
 @RunWith(WeldRunner.class)
 public class WeldTest {
 
-    @Inject private ABean abean;
-
-    @Before
-    public void before() throws ServletException, IOException {
-    }
+    @Inject
+    private ABean abean;
 
     @Test
     public void aTest() {

@@ -1,4 +1,4 @@
-package com.pontus;
+package com.pontus.testconfig;
 
 import com.pontus.rest.rule.*;
 import org.mockito.Mock;
@@ -18,22 +18,23 @@ import java.util.List;
  * Time: 2:57 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CDIProducer {
+public class CDITestProducer {
 
     static int counter = 0;
 
-	static int theecounter = 0;
+    static int theecounter = 0;
 
     //New is deprecated in CDI 1.1
     @Produces
     public ABean getAbean(@New TheBean theBean) {
         return theBean;
     }
-	@Produces
+
+    @Produces
     public List<RuleInterface> getRuleList() {
-       List<RuleInterface> newRuleList = new LinkedList<>();
-       for (RuleInterface rule : ruleList) {
-          newRuleList.add(rule);
+        List<RuleInterface> newRuleList = new LinkedList<>();
+        for (RuleInterface rule : ruleList) {
+            newRuleList.add(rule);
         }
         return newRuleList;
     }

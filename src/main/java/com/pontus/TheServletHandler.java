@@ -17,7 +17,7 @@ import java.security.Principal;
 @ManagedBean("theServletHandler")
 public class TheServletHandler {
 
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Principal userPrincipal = request.getUserPrincipal();
         if (userPrincipal != null) {
             response.getOutputStream().print("<div>" + userPrincipal.getName() + "</div>");
@@ -26,7 +26,7 @@ public class TheServletHandler {
 
 
     //@Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         service(request, response);
     }
 }

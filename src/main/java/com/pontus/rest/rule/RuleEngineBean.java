@@ -17,20 +17,20 @@ import java.util.Map;
  */
 @ManagedBean
 public class RuleEngineBean {
-    private Map<String, RuleInterface> rules = new HashMap<String, RuleInterface>();
+    private final Map<String, RuleInterface> rules = new HashMap<>();
 
     @Inject
     private List<RuleInterface> ruleList;
 
     @PostConstruct
-    public void init() throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException {
-         for (RuleInterface rule : ruleList) {
+    public void init() throws IOException {
+        for (RuleInterface rule : ruleList) {
             rules.put(rule.getId().toLowerCase(), rule);
         }
 
     }
 
-    public boolean evaluateRules() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public boolean evaluateRules() {
         for (RuleInterface rule : ruleList) {
             if (!rule.eval()) {
                 return false;
@@ -40,7 +40,7 @@ public class RuleEngineBean {
     }
 
 
-    public boolean evaluateRule(String id) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public boolean evaluateRule(String id) {
         return rules.get(id).eval();
     }
 }
